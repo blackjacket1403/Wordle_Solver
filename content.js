@@ -344,8 +344,6 @@
     mountUI();
     loadPrefs(() => { refresh(); observe(); });
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
-  else boot();
 
   const CSS = `
   :host { all: initial; }
@@ -391,4 +389,8 @@
   .chip{font-size:11px;padding:3px 7px;border-radius:10px;background:#eee;color:#555;}
   .chip.done{background:#6aaa64;color:#fff;}
   `;
+
+  // Start once CSS (and everything else) is defined.
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
 })();
