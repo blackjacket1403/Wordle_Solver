@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Wordle Solver — Hint & Auto-Solve",
+  "version": "1.0.0",
+  "description": "Statistical Wordle solver with Hint and Solver modes. Works on wordleunlimited.org, NYT Wordle, Quordle and more.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Wordle Solver",
+    "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+  },
+  "icons": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://wordleunlimited.org/*",
+        "*://*.wordleunlimited.org/*",
+        "*://www.nytimes.com/games/wordle/*",
+        "*://*.quordle.com/*",
+        "*://quordle.com/*",
+        "*://wordlegame.org/*",
+        "*://*.wordlegame.org/*",
+        "*://wordleplay.com/*",
+        "*://*.wordleplay.com/*"
+      ],
+      "js": ["words.js", "solver.js", "adapters.js", "content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    { "resources": ["words.js", "solver.js", "adapters.js"], "matches": ["<all_urls>"] }
+  ]
+}

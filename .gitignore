@@ -1,0 +1,8 @@
+node_modules/
+.playwright-mcp/
+*.log
+# raw site source + intermediate extraction artifacts (regenerate with tools/extract_words.py)
+main.js
+words_a.json
+words_b.json
+/tmp_*
